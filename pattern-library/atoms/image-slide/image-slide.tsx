@@ -1,4 +1,4 @@
-import NextImage from "next/image"
+import NextImage, { StaticImageData } from "next/image"
 import {
   isImageFitCover,
   isImageSlide,
@@ -6,21 +6,27 @@ import {
 } from "yet-another-react-lightbox/core"
 import { ImageSlideProperties } from "./types"
 
-function ImageSlide({ slide, rect, onClick, ...rest }: ImageSlideProperties) {
+export default function ImageSlide({
+  slide,
+  rect,
+  onClick
+}: ImageSlideProperties) {
   const { imageFit } = useLightboxProps().carousel
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit)
 
-  const width = !cover
-    ? Math.round(
-        Math.min(rect.width, (rect.height / slide.height) * slide.width)
-      )
-    : rect.width
+  const width =
+    !cover && slide.width && slide.height
+      ? Math.round(
+          Math.min(rect.width, (rect.height / slide.height) * slide.width)
+        )
+      : rect.width
 
-  const height = !cover
-    ? Math.round(
-        Math.min(rect.height, (rect.width / slide.width) * slide.height)
-      )
-    : rect.height
+  const height =
+    !cover && slide.width && slide.height
+      ? Math.round(
+          Math.min(rect.height, (rect.width / slide.width) * slide.height)
+        )
+      : rect.height
 
   function handleClick() {
     if (onClick) {
@@ -37,7 +43,7 @@ function ImageSlide({ slide, rect, onClick, ...rest }: ImageSlideProperties) {
       <NextImage
         fill
         alt=""
-        src={slide}
+        src={slide as StaticImageData}
         loading="eager"
         placeholder="blur"
         draggable={false}
@@ -47,5 +53,3 @@ function ImageSlide({ slide, rect, onClick, ...rest }: ImageSlideProperties) {
     </div>
   )
 }
-
-export default ImageSlide

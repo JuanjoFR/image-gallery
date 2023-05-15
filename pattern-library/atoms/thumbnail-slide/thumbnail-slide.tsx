@@ -1,4 +1,4 @@
-import NextImage from "next/image"
+import NextImage, { StaticImageData } from "next/image"
 import {
   isImageFitCover,
   isImageSlide,
@@ -6,21 +6,26 @@ import {
 } from "yet-another-react-lightbox/core"
 import { ThumbnailSlideProperties } from "./types"
 
-function ThumbnailSlide({ slide, rect }: ThumbnailSlideProperties) {
+export default function ThumbnailSlide({
+  slide,
+  rect
+}: ThumbnailSlideProperties) {
   const { imageFit } = useLightboxProps().carousel
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit)
 
-  const width = !cover
-    ? Math.round(
-        Math.min(rect.width, (rect.height / slide.height) * slide.width)
-      )
-    : rect.width
+  const width =
+    !cover && slide.width && slide.height
+      ? Math.round(
+          Math.min(rect.width, (rect.height / slide.height) * slide.width)
+        )
+      : rect.width
 
-  const height = !cover
-    ? Math.round(
-        Math.min(rect.height, (rect.width / slide.width) * slide.height)
-      )
-    : rect.height
+  const height =
+    !cover && slide.width && slide.height
+      ? Math.round(
+          Math.min(rect.height, (rect.width / slide.width) * slide.height)
+        )
+      : rect.height
 
   return (
     <div
@@ -30,7 +35,7 @@ function ThumbnailSlide({ slide, rect }: ThumbnailSlideProperties) {
       <NextImage
         fill
         alt=""
-        src={slide}
+        src={slide as StaticImageData}
         loading="eager"
         placeholder="blur"
         draggable={false}
@@ -40,5 +45,3 @@ function ThumbnailSlide({ slide, rect }: ThumbnailSlideProperties) {
     </div>
   )
 }
-
-export default ThumbnailSlide

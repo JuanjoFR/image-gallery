@@ -1,0 +1,4 @@
+/* Yet Another React Lightbox */
+@import "../node_modules/yet-another-react-lightbox/dist/styles.css";
+@import "../node_modules/yet-another-react-lightbox/dist/plugins/thumbnails/thumbnails.css";
+@import "./yarl-custom.css";

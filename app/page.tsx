@@ -1,10 +1,15 @@
 import LightboxExample from "@/pattern-library/organisms/lightbox-example"
 import { createApi } from "unsplash-js"
+import { InitParams } from "unsplash-js/dist/helpers/request"
+import { Header } from "@/pattern-library/organisms/header"
+import { Footer } from "@/pattern-library/organisms/footer"
+import { ProductMetadata } from "@/pattern-library/organisms/product-metadata"
+import { ProductDescription } from "@/pattern-library/organisms/product-description"
 
 async function Home() {
   const api = createApi({
     accessKey: process.env.UNSPLASH_ACCESS_KEY
-  })
+  } as InitParams)
 
   // const request = await api.topics.get({ topicIdOrSlug: "super mario" })
   const request = await api.search.getPhotos({
@@ -18,13 +23,17 @@ async function Home() {
   console.log("render page")
 
   return (
-    <main className="min-h-screen bg-yellow-200 pb-96">
-      <div className="container mx-auto grid grid-cols-1 sm:min-h-screen sm:grid-cols-2 sm:gap-2">
-        <div className="bg-teal-100">
-          <div className="sticky top-0">
-            <LightboxExample photos={request.response.results} />
+    <main className="min-h-screen bg-yellow-200">
+      <div className="container mx-auto sm:min-h-screen">
+        <Header />
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-2">
+          <div className="bg-teal-100">
+            <div className="sticky top-0">
+              {request.type === "success" ? (
+                <LightboxExample photos={request.response.results} />
+              ) : undefined}
 
-            {/* <div className=" grid grid-cols-1 sm:grid-cols-6">
+              {/* <div className=" grid grid-cols-1 sm:grid-cols-6">
               <ul className="flex overflow-scroll sm:col-span-1 sm:flex-col">
                 <li className="min-w-full">
                   <img src="https://fakeimg.pl/691x921/" />
@@ -49,65 +58,17 @@ async function Home() {
                 <li className="cursor-pointer p-1">o</li>
               </ul>
             </div> */}
+            </div>
+          </div>
+          <div className="overflow-hidden px-2 py-8 sm:p-0">
+            <ProductMetadata />
           </div>
         </div>
-        <div className="bg-red-200">
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            sagittis viverra imperdiet. Sed consequat tellus eu diam faucibus,
-            at auctor libero laoreet. In nec mattis quam, eget egestas augue.
-            Nullam eget neque vitae ex placerat scelerisque sit amet nec eros.
-            Cras lacinia hendrerit laoreet. Donec nec ex dictum, pellentesque
-            nibh eget, facilisis augue. Proin sollicitudin aliquam nisi eleifend
-            efficitur.
-          </p>
-          <p className="mb-4">
-            Mauris eleifend enim ipsum, tristique tincidunt urna ullamcorper id.
-            Maecenas efficitur enim nunc, nec commodo tortor posuere nec.
-            Integer nec ornare turpis, a bibendum nulla. Aliquam mattis eleifend
-            nisi sit amet vulputate. Suspendisse lectus purus, mollis gravida
-            diam eu, commodo tincidunt lacus. Sed in velit ut nisi rhoncus
-            dignissim nec feugiat justo. Vivamus ultricies felis id ornare
-            mollis. Phasellus eu quam ultrices, rutrum nulla ut, rhoncus purus.
-            Quisque porta sem tortor, sed vehicula felis volutpat at. Nunc
-            tellus dui, pharetra nec dignissim ac, gravida id tellus.
-          </p>
-          <p className="mb-4">
-            Suspendisse feugiat lectus dapibus justo fermentum porttitor. Nam ut
-            dolor rutrum, faucibus tortor id, cursus velit. Curabitur tincidunt
-            lectus vitae neque sagittis, ut feugiat mauris pharetra. Nulla
-            facilisi. Nulla eu pharetra orci. Integer cursus metus odio, ac
-            hendrerit dui pellentesque at. Donec eros urna, vehicula eu libero
-            ac, vehicula vulputate odio. Vestibulum ipsum arcu, finibus at odio
-            at, feugiat congue felis. In hac habitasse platea dictumst.
-            Vestibulum non libero a dolor fermentum imperdiet. Sed elit nulla,
-            laoreet quis tortor a, elementum molestie nibh.
-          </p>
-          <p className="mb-4">
-            In hac habitasse platea dictumst. Cras erat dui, ultricies et semper
-            in, iaculis vel lorem. Duis eu ante lacus. Nunc in eros quis lectus
-            molestie congue quis eu turpis. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Phasellus interdum aliquam ultricies.
-            Aliquam est magna, elementum vitae fermentum vitae, venenatis sit
-            amet felis. Maecenas non euismod mi. Sed ullamcorper, quam ut
-            lacinia aliquet, augue nisl ultrices mauris, id scelerisque quam
-            erat sollicitudin mauris. Morbi ante mi, vehicula sed facilisis eu,
-            sodales volutpat eros. In efficitur accumsan nunc non gravida.
-            Vivamus tempus in justo nec viverra. Vivamus varius convallis risus.
-            Fusce scelerisque gravida velit, a ullamcorper ipsum hendrerit et.
-            Aliquam tempor felis non consectetur feugiat.
-          </p>
-          <p>
-            Ut sollicitudin, nunc at vehicula laoreet, leo augue venenatis
-            tortor, nec tempus metus mi id nibh. In ultrices nec urna eu auctor.
-            Donec in convallis lacus, quis efficitur ante. Curabitur hendrerit
-            tempor maximus. Mauris eget varius sapien. Integer pretium odio at
-            tellus suscipit, vitae dictum nibh posuere. In tempor ante turpis,
-            et fermentum justo eleifend non. Vestibulum tellus felis, pulvinar
-            in blandit id, interdum et quam. Ut efficitur congue elit, eu
-            efficitur libero sollicitudin sit amet. Suspendisse a fermentum
-            felis.
-          </p>
+        <div className="overflow-hidden px-2 pt-8 sm:px-0">
+          <ProductDescription />
+        </div>
+        <div className="w-full overflow-hidden px-2 sm:px-0">
+          <Footer />
         </div>
       </div>
     </main>

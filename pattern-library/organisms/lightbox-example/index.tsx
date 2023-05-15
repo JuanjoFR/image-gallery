@@ -5,8 +5,9 @@ import Lightbox from "yet-another-react-lightbox"
 import CustomImage from "../../atoms/image"
 import Inline from "yet-another-react-lightbox/plugins/inline"
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails"
-import InlineGallery from "../inline-gallery"
-import ImageSlide from "../../atoms/image-slide"
+import { InlineGallery } from "../inline-gallery"
+import { ImageSlide } from "../../atoms/image-slide"
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid"
 
 // TODO
 // Global: integrate with nextjs
@@ -154,7 +155,12 @@ function LightboxExample({ photos }) {
           width: photo.width,
           height: photo.height
         }))}
-        render={{ slide: ImageSlide }}
+        render={{
+          slide: ImageSlide,
+          // iconPrev: () => <ChevronLeftIcon className="h-6 w-6 text-blue-500" />
+          iconPrev: () => <ChevronLeftIcon />,
+          iconNext: () => <ChevronRightIcon />
+        }}
         on={{
           view: ({ index }) => {
             if (inlineGalleryIndex !== index) {

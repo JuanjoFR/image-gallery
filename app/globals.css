@@ -1,7 +1,43 @@
-@import "./yarl.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
+
+/* @tailwind base; */
+@import "tailwindcss/base";
+/* @import "./custom-base-styles.css"; */
+
+/* @tailwind components; */
+@import "tailwindcss/components";
+@import "./custom-components.css";
+
+/* @tailwind utilities; */
+@import "tailwindcss/utilities";
+/* @import "./custom-utilities.css"; */
+
+/* @import "../node_modules/yet-another-react-lightbox/dist/styles.css";
+@import "../node_modules/yet-another-react-lightbox/dist/plugins/thumbnails/thumbnails.css"; */
+
+/* The components layer is also a good place to put custom styles for any third-party components you’re using:
+https://tailwindcss.com/docs/adding-custom-styles#adding-component-classes */
+
+/* @layer components {
+  @import "../node_modules/yet-another-react-lightbox/dist/styles.css";
+  @import "../node_modules/yet-another-react-lightbox/dist/plugins/thumbnails/thumbnails.css";
+
+  .yarl__root {
+    --yarl__color_backdrop: theme(colors.gray.900);
+  }
+
+  .inline.yarl__root {
+    --yarl__color_backdrop: theme(colors.gray.100);
+    --yarl__color_button: theme(colors.yellow.600);
+
+    --yarl__button_filter: "none";
+
+     --yarl__icon_size: 80px; 
+    --yarl__button_background_color: red;
+    --yarl__button_border: theme(colors.blue.600);
+     shadow::: theme(boxShadow.lg) 
+  }
+} */
 
 :root {
   --foreground-rgb: 0, 0, 0;
