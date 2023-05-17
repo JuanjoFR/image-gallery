@@ -1,28 +1,22 @@
-/* https://youtu.be/nOQyWbPO2Ds?t=348
-https://yet-another-react-lightbox.com/customization */
-
-/* :root {
-  --foreground-rgb: 255, 0, 0;
-} */
 .yarl__root {
-  --yarl__color_backdrop: theme(colors.gray.900);
+  --yarl__color_backdrop: theme(colors.white);
+  --yarl__navigation_button_padding: theme(padding.4);
+  --yarl__color_button: theme(colors.black);
+  --yarl__button_filter: "none";
 }
 
 .inline.yarl__root {
   --yarl__color_backdrop: theme(colors.transparent);
-  /* --yarl__carousel_padding_px: theme(padding.0); */
   --yarl__color_button: theme(colors.black);
-
-  --yarl__button_filter: "none";
-
-  /* --yarl__icon_size: 80px; */
   --yarl__button_background_color: theme(colors.white);
-  --yarl__navigation_button_padding: theme(padding.4);
-  /* --yarl__button_border: theme(colors.blue.600); */
-  /* shadow::: theme(boxShadow.lg) */
-
-  /* --yarl__thumbnails_container_background_color: theme(colors.red.700); */
   --yarl__thumbnails_thumbnail_background: theme(colors.gray.300);
+}
+.modal .yarl__navigation_prev,
+.modal .yarl__navigation_next {
+  @apply bg-white;
+}
+.modal .yarl__toolbar .yarl__button {
+  @apply hover:text-gray-400;
 }
 
 .inline .yarl__slide {
@@ -33,22 +27,16 @@ https://yet-another-react-lightbox.com/customization */
 .yarl__navigation_next {
   @apply rounded-full transition-colors duration-300 hover:bg-black;
 }
-
 .yarl__navigation_prev {
   @apply ml-2;
 }
-
 .yarl__navigation_next {
   @apply mr-2;
 }
 
-.yarl__thumbnails_thumbnail {
+.inline .yarl__thumbnails_thumbnail {
   @apply border-transparent;
 }
-.yarl__thumbnails_thumbnail_active {
-  @apply border-black;
+.inline .yarl__thumbnails_thumbnail_active {
+  @apply border-gray-500;
 }
-
-/* .yarl__navigation_next {
-  @apply filter-none;
-} */
