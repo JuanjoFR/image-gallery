@@ -4,7 +4,10 @@ import {
   isImageSlide,
   useLightboxProps
 } from "yet-another-react-lightbox/core"
-import { ImageSlideProperties } from "./types"
+import { Coords, ImageSlideProperties } from "./types"
+import React from "react"
+
+const DELTA = 6
 
 export default function ImageSlide({
   slide,
@@ -13,6 +16,7 @@ export default function ImageSlide({
 }: ImageSlideProperties) {
   const { imageFit } = useLightboxProps().carousel
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit)
+  const [mouseCoords, setMouseCoords] = React.useState<Coords>()
 
   const width =
     !cover && slide.width && slide.height
@@ -28,17 +32,34 @@ export default function ImageSlide({
         )
       : rect.height
 
-  function handleClick() {
-    if (onClick) {
-      onClick(slide)
+  function handleMouseDown(
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    setMouseCoords({
+      x: event.pageX,
+      y: event.pageY
+    })
+  }
+
+  function handleMouseUp(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    if (mouseCoords) {
+      const diffX = Math.abs(event.pageX - mouseCoords.x)
+      const diffY = Math.abs(event.pageY - mouseCoords.y)
+
+      if (diffX < DELTA && diffY < DELTA && onClick) {
+        onClick(slide)
+      }
     }
+
+    setMouseCoords(undefined)
   }
 
   return (
     <div
       style={{ position: "relative", width, height }}
       className="bg-slate-300"
-      onClick={handleClick}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
       <NextImage
         fill

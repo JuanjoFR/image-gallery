@@ -13,21 +13,21 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-3 gap-2 md:mt-8">
           <div>
-            <div className="mb-2 mr-4 h-2 w-16 rounded-md bg-gray-400" />
+            <div className="mb-4 mr-4 h-2 w-16 rounded-md bg-gray-400" />
             <div className="mb-2 mr-4 h-2 w-24 rounded-md bg-gray-300" />
             <div className="mb-2 mr-4 h-2 w-20 rounded-md bg-gray-300" />
             <div className="mb-2 mr-4 h-2 w-16 rounded-md bg-gray-300" />
             <div className="mr-4 h-2 w-20 rounded-md bg-gray-300" />
           </div>
           <div>
-            <div className="mb-2 mr-4 h-2 w-16 rounded-md bg-gray-400" />
+            <div className="mb-4 mr-4 h-2 w-16 rounded-md bg-gray-400" />
             <div className="mb-2 mr-4 h-2 w-24 rounded-md bg-gray-300" />
             <div className="mb-2 mr-4 h-2 w-20 rounded-md bg-gray-300" />
             <div className="mb-2 mr-4 h-2 w-16 rounded-md bg-gray-300" />
             <div className="mr-4 h-2 w-20 rounded-md bg-gray-300" />
           </div>
           <div>
-            <div className="mb-2 mr-4 h-2 w-16 rounded-md bg-gray-400" />
+            <div className="mb-4 mr-4 h-2 w-16 rounded-md bg-gray-400" />
             <div className="mb-2 mr-4 h-2 w-24 rounded-md bg-gray-300" />
             <div className="mb-2 mr-4 h-2 w-20 rounded-md bg-gray-300" />
             <div className="mb-2 mr-4 h-2 w-16 rounded-md bg-gray-300" />

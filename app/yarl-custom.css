@@ -9,7 +9,8 @@ https://yet-another-react-lightbox.com/customization */
 }
 
 .inline.yarl__root {
-  --yarl__color_backdrop: theme(colors.gray.100);
+  --yarl__color_backdrop: theme(colors.transparent);
+  /* --yarl__carousel_padding_px: theme(padding.0); */
   --yarl__color_button: theme(colors.black);
 
   --yarl__button_filter: "none";
@@ -22,6 +23,10 @@ https://yet-another-react-lightbox.com/customization */
 
   /* --yarl__thumbnails_container_background_color: theme(colors.red.700); */
   --yarl__thumbnails_thumbnail_background: theme(colors.gray.300);
+}
+
+.inline .yarl__slide {
+  padding-top: theme(padding.0);
 }
 
 .yarl__navigation_prev,
