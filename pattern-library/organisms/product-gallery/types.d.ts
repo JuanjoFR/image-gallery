@@ -1,5 +1,5 @@
-import { Basic } from "unsplash-js/dist/methods/photos/types"
+import { SlideImage } from "yet-another-react-lightbox"
 
 interface ProductGalleryProperties {
-  photos: Basic[]
+  slideImages: SlideImage[]
 }

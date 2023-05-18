@@ -1,4 +1,3 @@
-// https://yet-another-react-lightbox.com/advanced
 declare module "yet-another-react-lightbox" {
   interface SlideImage {
     index?: number

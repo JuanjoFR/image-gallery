@@ -1,9 +1,9 @@
-import { Basic } from "unsplash-js/dist/methods/photos/types"
+import { SlideImage } from "yet-another-react-lightbox"
 
-export interface ModalGalleryProperties {
+interface ModalGalleryProperties {
   index: number
   open: boolean
-  photos: Basic[]
+  slideImages: SlideImage[]
   onClose: () => void
   onView: (index: number) => void
 }

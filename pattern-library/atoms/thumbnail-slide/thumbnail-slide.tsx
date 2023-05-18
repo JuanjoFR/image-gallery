@@ -12,14 +12,12 @@ export default function ThumbnailSlide({
 }: ThumbnailSlideProperties) {
   const { imageFit } = useLightboxProps().carousel
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit)
-
   const width =
     !cover && slide.width && slide.height
       ? Math.round(
           Math.min(rect.width, (rect.height / slide.height) * slide.width)
         )
       : rect.width
-
   const height =
     !cover && slide.width && slide.height
       ? Math.round(

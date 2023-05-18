@@ -1,6 +1,3 @@
-// shimmer project example: https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.tsx
-// skeleton examples: https://flowbite.com/docs/components/skeleton/
-
 function createShimmer(w: number, h: number) {
   return `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -5,6 +5,7 @@ import { Footer } from "@/pattern-library/organisms/footer"
 import { ProductMetadata } from "@/pattern-library/organisms/product-metadata"
 import { ProductDescription } from "@/pattern-library/organisms/product-description"
 import { ProductGallery } from "@/pattern-library/organisms/product-gallery"
+import { createBlurData } from "@/library/utilities"
 
 async function Home() {
   const api = createApi({
@@ -32,7 +33,20 @@ async function Home() {
               <div className="">
                 <div className="sticky top-0">
                   {request.type === "success" ? (
-                    <ProductGallery photos={request.response.results} />
+                    <ProductGallery
+                      slideImages={request.response.results.map(
+                        (photo, index) => ({
+                          index,
+                          src: photo.urls.regular,
+                          blurDataURL: createBlurData(
+                            photo.width,
+                            photo.height
+                          ),
+                          width: photo.width,
+                          height: photo.height
+                        })
+                      )}
+                    />
                   ) : undefined}
                 </div>
               </div>

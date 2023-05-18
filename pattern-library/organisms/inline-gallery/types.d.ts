@@ -1,8 +1,8 @@
-import { Basic } from "unsplash-js/dist/methods/photos/types"
+import { SlideImage } from "yet-another-react-lightbox"
 
-export interface InlineGalleryProperties {
+interface InlineGalleryProperties {
   index: number
-  photos: Basic[]
+  slideImages: SlideImage[]
   onView: (index: number) => void
   onClick: () => void
 }

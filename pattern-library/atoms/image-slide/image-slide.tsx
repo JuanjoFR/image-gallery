@@ -17,14 +17,12 @@ export default function ImageSlide({
   const { imageFit } = useLightboxProps().carousel
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit)
   const [mouseCoords, setMouseCoords] = React.useState<Coords>()
-
   const width =
     !cover && slide.width && slide.height
       ? Math.round(
           Math.min(rect.width, (rect.height / slide.height) * slide.width)
         )
       : rect.width
-
   const height =
     !cover && slide.width && slide.height
       ? Math.round(
