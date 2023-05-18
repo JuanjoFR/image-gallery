@@ -19,8 +19,6 @@ async function Home() {
     orderBy: "relevant"
   })
 
-  console.log("...", request)
-
   return (
     <main className="min-h-screen">
       <div className="md:min-h-screen">
