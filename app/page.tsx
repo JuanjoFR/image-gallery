@@ -21,12 +21,12 @@ async function Home() {
   return (
     <main className="min-h-screen">
       <div className="md:min-h-screen">
-        <div className="bg-white">
+        <div className="bg-white dark:bg-gray-900">
           <div className="container mx-auto">
             <Header />
           </div>
         </div>
-        <div className="bg-white">
+        <div className="bg-white dark:bg-gray-900">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8">
               <div className="">
@@ -45,7 +45,7 @@ async function Home() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-200">
+        <div className="bg-gray-200 dark:bg-gray-700">
           <div className="container mx-auto">
             <div className="w-full overflow-hidden px-2 md:px-0">
               <Footer />
