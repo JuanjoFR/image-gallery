@@ -4,7 +4,7 @@ import { Header } from "@/pattern-library/organisms/header"
 import { Footer } from "@/pattern-library/organisms/footer"
 import { ProductMetadata } from "@/pattern-library/organisms/product-metadata"
 import { ProductDescription } from "@/pattern-library/organisms/product-description"
-import { ProductGallery } from "@/pattern-library/organisms/product-gallery"
+import { DynamicProductGallery } from "@/pattern-library/organisms/product-gallery"
 import { createBlurData } from "@/library/utilities"
 
 async function Home() {
@@ -18,6 +18,8 @@ async function Home() {
     perPage: 10,
     orderBy: "relevant"
   })
+
+  console.log("...", request)
 
   return (
     <main className="min-h-screen">
@@ -33,7 +35,7 @@ async function Home() {
               <div className="">
                 <div className="sticky top-0">
                   {request.type === "success" ? (
-                    <ProductGallery
+                    <DynamicProductGallery
                       slideImages={request.response.results.map(
                         (photo, index) => ({
                           index,
@@ -47,7 +49,16 @@ async function Home() {
                         })
                       )}
                     />
-                  ) : undefined}
+                  ) : (
+                    <div className="px-2 py-8 text-sm text-red-700 dark:text-red-300 md:px-0">
+                      <p>{`Error fetching Unsplash photos:`}</p>
+                      <ol>
+                        {request.errors.map((error, index) => (
+                          <li key={index}>{error}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="overflow-hidden px-2 py-8 md:px-0">
