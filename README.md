@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Image Gallery
 
-## Getting Started
+## Motivation
 
-First, run the development server:
+The goal of this project is to show the use of an image gallery as it is used in multiple e-commerce websites, with synchronization between the inline gallery and the second gallery that is displayed when clicking on an image.
 
-```bash
+## Technical details
+
+This project uses [NextJS 13][nextjs-13] along with Tailwind for styling. The image galleries have been created using the [Yet Another React Lightbox][yet-another-react-lightbox] module customized to work synchronously between two independent galleries and with the styles modified with [Tailwind][tailwind].
+
+Images are dynamically downloaded the first time the project is built using the [official JavaScript wrapper][official unsplash javascript wrapper] for the [Unsplash API][unsplash api].
+
+## Run locally
+
+To run this project locally you must clone the repository, create a `.env.local` file with your Unsplash access key (see the `.env.local.example` file) and run it with npm like any other NextJS project:
+
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+One of the best ways to learn and improve is by sharing knowledge, so you can use this project to study and improve. I hope you find it useful!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[nextjs-13]: https://nextjs.org
+[yet-another-react-lightbox]: https://yet-another-react-lightbox.com
+[tailwind]: https://tailwindcss.com
+[official unsplash javascript wrapper]: https://www.npmjs.com/package/unsplash-js
+[unsplash api]: https://unsplash.com/developers
